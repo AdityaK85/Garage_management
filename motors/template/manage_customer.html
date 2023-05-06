@@ -1,0 +1,249 @@
+{% include 'header.html' %} {% load static %}
+
+<div class="main-content">
+  <div class="section-body">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Manage Customer</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped" id="table-1">
+                <thead>
+                  <tr>
+                    <th class="text-center">No.</th>
+                    <th>Customer Name</th>
+                    <th>Customer Phone</th>
+                    <th>Customer mobile</th>
+                    <th>Customer email</th>
+                    <th>Customer skype</th>
+                    <th>Customer address</th>
+                    <th>Company name</th>
+                    <th>Company No.</th>
+                    <th>GST/Vat No.</th>
+                    <th>Company type</th>
+                    <th>Postal address</th>
+                    <th>Physical address</th>
+                    <th>Company website</th>
+                    <th>Director name</th>
+                    <th>Director mobile</th>
+                    <th>Director phone</th>
+                    <th>Director address</th>
+                    <th>Trade refrence 1</th>
+                    <th>Trade refrence 2</th>
+                    <th>Trade refrence 3</th>
+                    <th>Status</th>
+                    <th>Notes</th>
+                    <th>Notifications</th>
+                    <th>Payment method</th>
+                    <th>Payment period</th>
+                    <th>Company sales discount</th>
+                    <th>User name</th>
+                    <th>Password</th>
+                    <th>Role name</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for obj in get_data %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{obj.cust_name}}</td>
+                    <td>{{obj.cust_phone}}</td>
+                    <td>{{obj.cust_mobile}}</td>
+                    <td>{{obj.cust_email}}</td>
+                    <td>{{obj.cust_skype}}</td>
+                    <td>{{obj.cust_addr}}</td>
+                    <td>{{obj.comp_name}}</td>
+                    <td>{{obj.comp_no}}</td>
+                    <td>{{obj.gst_vat_no}}</td>
+                    <td>{{obj.comp_type}}</td>
+                    <td>{{obj.postal_addr}}</td>
+                    <td>{{obj.phy_addr}}</td>
+                    <td>{{obj.comp_web}}</td>
+                    <td>{{obj.dir_name}}</td>
+                    <td>{{obj.dir_mobile}}</td>
+                    <td>{{obj.dir_phone}}</td>
+                    <td>{{obj.dir_addr}}</td>
+                    <td>{{obj.trade_ref_1}}</td>
+                    <td>{{obj.trade_ref_2}}</td>
+                    <td>{{obj.trade_ref_3}}</td>
+                    <td>
+                      <div class="badge badge-success">{{obj.status}}</div>
+                    </td>
+                    <td>{{obj.notes}}</td>
+                    <td>{{obj.notif}}</td>
+                    <td>{{obj.pay_met}}</td>
+                    <td>{{obj.pay_period}}</td>
+                    <td>{{obj.comp_sal_disc}}</td>
+                    <td>{{obj.user_name}}</td>
+                    <td>{{obj.user_pass}}</td>
+                    <td>{{obj.role_name}}</td>
+                    <td>
+                      <a
+                        href="/edit_customer/{{obj.id}}"
+                        class="btn btn-success"
+                        ><i class="fas fa-user-edit"></i
+                      ></a>
+                    </td>
+                    <td>
+                      <button
+                        type="button"
+                        class="btn btn-warning"
+                        onclick="delete_col('{{obj.id}}')"
+                      >
+                        <i class="fas fa-minus-circle"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main-content">
+  <div class="section-body">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>IMPORT DATA</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <form
+                action="/import-excel/"
+                method="post"
+                id="file-upload-form"
+                enctype="multipart/form-data"
+              >
+                <input
+                  type="file"
+                  name="csvSelectore"
+                  id="csvSelectore"
+                  class="btn btn-light"
+                />
+                <button
+                  type="submit"
+                  class="btn btn-primary mx-2"
+                  name="upload"
+                  id="upload-btn"
+                >
+                  Upload
+                </button>
+              </form>
+              <br>
+              <table class="table table-striped" id="table-2">
+                <thead>
+                  <tr>
+                    <th>No.</th>
+                    <th>Vehicle name</th>
+                    <th>year</th>
+                    <th>Vehicle Registrations Date</th>
+                    <th>Vehicle Registrations No.</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for i in csvData %}
+                  <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.veh_name}}</td>
+                    <td>{{i.veh_year}}</td>
+                    <td>{{i.veh_reg_date|date:'Y-m-d'}}</td>
+                    <td>{{i.veh_reg_no}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Using for Import -->
+<script>
+  function uploadFile() {
+    alert("function run");
+    $.ajax({
+      data: $(this).serialize(),
+      type: $(this).attr("method"),
+      url: $(this).attr("action"),
+    });
+    return false;
+  }
+
+  // $(function () {
+  //   $("#upload-btn").submit(uploadFile);
+  // });
+
+  const x = document.getElementById("csvSelectore");
+
+  x.addEventListener("change", () => {
+    // upload file in database
+
+    const fr = new FileReader();
+    fr.onloadend = (e) => {
+      let r = fr.result.split("\n").map((e) => {
+        return e.split(",");
+      });
+      r.forEach((e) => {
+        let m = e
+          .map((e) => {
+            return `<td>${e}</td>`;
+          })
+          .join("");
+        const ce = document.createElement("tr");
+        ce.innerHTML = m;
+        $("#table").append(ce);
+      });
+    };
+    fr.readAsText(x.files[0]);
+    $("#table").html("");
+  });
+
+  function delete_col(id) {
+    console.log(id);
+    swal({
+      title: "Are you sure?",
+      text: "",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        $.ajax({
+          method: "POST",
+          url: "/delete_customer/",
+          data: {
+            id: id,
+          },
+          success: function (response) {
+            if (response == "success") {
+              swal("Customer Data has been Deleted!", {
+                icon: "success",
+                button: "Ok",
+                closeOnClickOutside: false,
+              }).then(function () {
+                location.reload();
+              });
+            }
+          },
+        });
+      }
+    });
+  }
+</script>
+
+{% include 'footer.html' %}

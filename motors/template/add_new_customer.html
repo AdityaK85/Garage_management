@@ -1,0 +1,860 @@
+{% include 'header.html' %}
+
+<div class="main-content" id="tab1">
+    <div class="card">
+        <div class="card-header">
+            <h4>Add new customer</h4>
+        </div>
+        <div class="card-body">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Customer name</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="cust_name" id="cust_name" />
+                    <div class="invalid-feedback" id="cust_name_error">
+                        Oh no! Customer good name is valid?
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Customer Phone</label>
+                <div class="col-sm-9">
+                    <input type="tel" class="form-control" name="cust_phone" id="cust_phone" maxlength="10"
+                        pattern="[0-9]{10}" />
+                    <div class="invalid-feedback" id="cust_phone_error">Oh no! phone no is invalid.</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Customer mobile</label>
+                <div class="col-sm-9">
+                    <input type="tel" class="form-control" name="cust_mobile" id="cust_mobile" maxlength="10"
+                        pattern="[0-9]{10}" />
+                    <div class="valid-feedback" id="cust_mobile_error">Mobile no is invalid!</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Customer email</label>
+                <div class="col-sm-9">
+                    <input type="email" class="form-control" name="cust_email" id="cust_email" />
+                    <div class="valid-feedback" id="cust_email_error">Email no is invalid!</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Customer skype</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="cust_skype" id="cust_skype" />
+                    <div class="valid-feedback" id="cust_skype_error">Skype no is invalid!</div>
+                </div>
+            </div>
+            <div class="form-group mb-0 row">
+                <label class="col-sm-3 col-form-label">Customer address</label>
+                <div class="col-sm-9">
+                    <textarea class="form-control" name="cust_addr" id="cust_addr" required=""></textarea>
+                    <div class="invalid-feedback" id="cust_addr_error">Address is invalid?</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-right">
+            <a href="/dashboard"> <button class="btn btn-success">Back</button></a>
+            <button class="btn btn-primary" type="button" id="open-tab2" onclick="cust_det_btn()">Next</button>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- 2nd form  -->
+<div class="main-content" id="tab2">
+    <div class="card">
+        <div class="card-header">
+            <h4>Company details</h4>
+        </div>
+        <div class="card-body">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Company name</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="comp_name" id="comp_name" />
+                    <div class="invalid-feedback" id="comp_name_error">Oh no! Company name is invalid?</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Company Phone</label>
+                <div class="col-sm-9">
+                    <input type="tel" class="form-control" name="comp_no" id="comp_no" maxlength="10"
+                        pattern="[0-9]{10}" />
+                    <div class="invalid-feedback" id="comp_phone_error">Oh no! phone no. is invalid.</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">GST/Vat no.</label>
+                <div class="col-sm-9">
+                    <input type="number" class="form-control" name="gst_vat_no" id="gst_vat_no" />
+                    <div class="valid-feedback" id="comp_gst_vat_no_error">GST/Vat no. is invalid!</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Company Type</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="comp_type" id="comp_type" />
+                    <div class="valid-feedback" id="comp_type_error">Type is invalid!</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Customer website</label>
+                <div class="col-sm-9">
+                    <input type="email" class="form-control" name="comp_web" id="comp_web" />
+                    <div class="valid-feedback" id="comp_web_error">Website name is invalid!</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Postal address</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="postal_addr" id="postal_addr" />
+                    <div class="valid-feedback" id="comp_postal_addr_error">Postal address is invalid!</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Physical address</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="phy_addr" id="phy_addr" />
+                    <div class="valid-feedback" id="comp_phy_addr_error">Physical address is invalid!</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-right">
+            <button class="btn btn-success" id="close-tab2">Back</button>
+            <button class="btn btn-primary" id="open-tab3" onclick="comp_det_btn()">Next</button>
+        </div>
+    </div>
+</div>
+
+<!-- 3rd form Account details -->
+<div class="main-content" id="tab3">
+    <div class="card">
+        <div class="card-header">
+            <h4>Account details</h4>
+        </div>
+        <div class="card-body">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Director name</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="dir_name" id="dir_name" required="" />
+                    <div class="invalid-feedback" id="dir_name_error" >Oh no! Director name is valid?</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Director mobile</label>
+                <div class="col-sm-9">
+                    <input type="number" name="dir_mobile" id="dir_mobile" class="form-control" required="" />
+                    <div class="invalid-feedback" id="dir_mobile_error" >
+                        Oh no! Director mobile is invalid.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Director phone</label>
+                <div class="col-sm-9">
+                    <input type="number" class="form-control" name="dir_phone" id="dir_phone" />
+                    <div class="valid-feedback" id="dir_phone_error" >Director phone is invalid!</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Director address</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="dir_addr" id="dir_addr" required="" />
+                    <div class="invalid-feedback " id="dir_addr_error">
+                        Oh no! Director address is invalid.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Trade Refrence Type 1</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="trade_ref_1" id="trade_ref_1" />
+                    <div class="valid-feedback" id="trade_ref_1_error" >Trade Refrence Type 1 is invalid!</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Trade Refrence Type 2</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="trade_ref_2" id="trade_ref_2" />
+                    <div class="valid-feedback" id="trade_ref_2_error">Trade Refrence Type 2 is invalid!</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Trade Refrence Type 3</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="trade_ref_3" id="trade_ref_3" />
+                    <div class="valid-feedback" id="trade_ref_3_error" >Trade Refrence Type 3 is invalid!</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Status</label>
+                <div class="col-sm-9">
+                    <select class="form-control selectric" name="status" id="status">
+                        <option value="Active">Active</option>
+                        <option value="not active">Not active</option>
+                        <option value="None">None</option>
+                    </select>
+                    <div class="valid-feedback" id="status_error" >Status is invalid!</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Notes</label>
+                <div class="col-sm-9">
+                    <textarea class="form-control" name="notes" id="notes"></textarea>
+                    <div class="valid-feedback">Notes is invalid!</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-right">
+            <button type="button" class="btn btn-success" id="close-tab3">Back</button>
+            <button type="button" class="btn btn-primary" onclick="ac_det_btn()" id="open-tab4">Next</button>
+        </div>
+    </div>
+</div>
+
+<!-- Financial details  -->
+
+<div class="main-content" id="tab4">
+    <div class="card">
+        <div class="card-header">
+            <h4>Financial details</h4>
+        </div>
+        <div class="card-body">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Notifications</label>
+                <div class="col-sm-9">
+                    <div class="form-group">
+                        <div class="selectgroup selectgroup-pills">
+                            <label class="selectgroup-item">
+                                <input type="checkbox" value="HTML" class="selectgroup-input" checked />
+                                <span class="selectgroup-button">SMS</span>
+                            </label>
+                            <label class="selectgroup-item">
+                                <input type="checkbox" value="CSS" class="selectgroup-input" />
+                                <span class="selectgroup-button">Email</span>
+                            </label>
+                            <label class="selectgroup-item">
+                                <input type="checkbox" value="PHP" class="selectgroup-input" />
+                                <span class="selectgroup-button">Post</span>
+                            </label>
+                            <label class="selectgroup-item">
+                                <input type="checkbox" value="JavaScript" class="selectgroup-input" />
+                                <span class="selectgroup-button">None</span>
+                            </label>
+                            <input type="hidden" id="notif" name="notif" value="{{edit_cust.notif}}" required="" />
+                        </div>
+                    </div>
+                    <div class="invalid-feedback">Oh no! Notifications is invalid?</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Payment method</label>
+                <div class="col-sm-9">
+                    <div class="form-group">
+                        <div class="selectgroup w-100">
+                            <label class="selectgroup-item">
+                                <input type="radio" value="Cash" name="size" class="selectgroup-input-radio"
+                                    required="" />
+                                <span class="selectgroup-button selectgroup-button-icon"><i
+                                        class="fas fa-money-bill-alt"></i> Cash
+                                </span>
+                            </label>
+                            <label class="selectgroup-item">
+                                <input type="radio" value="Internet" name="size" class="selectgroup-input-radio" checked
+                                    required="" />
+                                <span class="selectgroup-button selectgroup-button-icon"><i
+                                        class="fab fa-internet-explorer"></i> Internet</span>
+                            </label>
+                            <label class="selectgroup-item">
+                                <input type="radio" name="size" value="Credit" class="selectgroup-input-radio"
+                                    required="" />
+                                <span class="selectgroup-button selectgroup-button-icon"><i
+                                        class="fas fa-credit-card"></i> Credit</span>
+                            </label>
+                            <input type="hidden" name="pay_met" id="pay_met" required="">
+                        </div>
+                    </div>
+                    <div class="invalid-feedback">
+                        Oh no! Payment method is invalid.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Payment Period</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="pay_period" name="pay_period" required="" />
+                    <div class="valid-feedback" id="pay_period" >Payment Period is invalid!</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Company Sales Discount</label>
+                <div class="col-sm-9">
+                    <div class="form-group">
+                        <select class="form-control selectric" id="comp_sal_disc" name="comp_sal_disc" required="">
+                            <option value="no Discount">No Discount</option>
+                            <option value="10%">Discount 10%</option>
+                            <option value="15%">Discount 15%</option>
+                            <option value="25%">Discount 25%</option>
+                            <option value="35%">Discount 35%</option>
+                        </select>
+                    </div>
+                    <div class="valid-feedback" id="comp_sal_disc_error" >Company Sales Discount is invalid!</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-right">
+            <button class="btn btn-success" id="close-tab4">Back</button>
+            <button class="btn btn-primary" id="open-tab5" onclick="finan_det_btn()" >Next</button>
+        </div>
+    </div>
+</div>
+
+<!-- Login details  -->
+
+<div class="main-content" id="tab5">
+    <div class="card">
+        <div class="card-header">
+            <h4>Login details</h4>
+        </div>
+        <div class="card-body">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">User name</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="user_name" name="user_name" required="" />
+                    <div class="invalid-feedback" id="user_name_error">Oh no! User name is invalid?</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Password</label>
+                <div class="col-sm-9">
+                    <input type="password" class="form-control" id="user_pass" name="user_pass" required="" /><small
+                        id="passwordHelpBlock" class="form-text text-muted">
+                        Your password must be 8-20 characters long, contain letters and
+                        numbers, and must not contain spaces, special characters, or
+                        emoji.
+                    </small>
+                    <div class="invalid-feedback" id="user_pass_error">Oh no! Password is invalid.</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Role</label>
+                <div class="col-sm-9">
+                    <select class="form-control selectric" id="role_name" name="role_name" required="">
+                        <option value="Software Engineer">Software Engineer</option>
+                        <option value="Ui/Ux Designer">Ui/Ux Designer</option>
+                        <option value="Developer">Developer</option>
+                        <option value="Web Developer">Web Developer</option>
+                        <option value="Employee">Employee</option>
+                        <option value="Team leader">Team leader</option>
+                    </select>
+                    <div class="valid-feedback">Role is invalid!</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-right">
+            <button class="btn btn-success" id="close-tab5">Back</button>
+            <button class="btn btn-primary" onclick="save()" id="swal-2">Add details</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+    $("#tab2").hide();
+    $("#tab3").hide();
+    $("#tab4").hide();
+    $("#tab5").hide();
+    
+    // // back button
+
+    $("#close-tab2").click(function () {
+        $("#tab1").show();
+        $("#tab2").hide();
+        $("#tab3").hide();
+        $("#tab4").hide();
+        $("#tab5").hide();
+    });
+
+    $("#close-tab3").click(function () {
+        $("#tab1").hide();
+        $("#tab2").show();
+        $("#tab3").hide();
+        $("#tab4").hide();
+        $("#tab5").hide();
+    });
+
+    $("#close-tab4").click(function () {
+        $("#tab1").hide();
+        $("#tab2").hide();
+        $("#tab3").show();
+        $("#tab4").hide();
+        $("#tab5").hide();
+    });
+
+    $("#close-tab5").click(function () {
+        $("#tab1").hide();
+        $("#tab2").hide();
+        $("#tab3").hide();
+        $("#tab4").show();
+        $("#tab5").hide();
+    });
+
+
+    function cust_det_btn() {
+        var cust_name = $('#cust_name').val();
+        var cust_phone = $('#cust_phone').val();
+        var cust_mobile = $('#cust_mobile').val();
+        var cust_email = $('#cust_email').val();
+        var cust_skype = $('#cust_skype').val();
+        var cust_addr = $('#cust_addr').val();
+
+        if (cust_name == "") {
+            $('#cust_name_error').show()
+            $('#cust_name').focus()
+
+        } else if (cust_phone == "") {
+            $('#cust_phone_error').show()
+            $('#cust_name').focus()
+
+        }
+        else if (cust_mobile == "") {
+            $('#cust_mobile_error').show()
+            $('#cust_mobile').focus()
+        }
+        else if (cust_email == "") {
+            $('#cust_email_error').show()
+            $('#cust_email').focus()
+        }
+        else if (cust_skype == "") {
+            $('#cust_skype_error').show()
+            $('#cust_skype').focus()
+        }
+        else if (cust_addr == "") {
+            $('#cust_addr_error').show()
+            $('#cust_addr').focus()
+        }
+        else {
+            $("#open-tab2").click(function () {
+                $('#tab1').hide()
+                $('#tab2').show()
+                $('#tab3').hide()
+                $('#tab4').hide()
+                $('#tab5').hide()
+            })
+        }
+    }
+
+    $("#cust_name").keyup(function () {
+        $("#cust_name_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+    $("#cust_phone").keyup(function () {
+        $("#cust_phone_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+    $("#cust_mobile").keyup(function () {
+        $("#cust_mobile_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+    $("#cust_phone").keyup(function () {
+        $("#cust_phone_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+    $("#cust_skype").keyup(function () {
+        $("#cust_skype_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+    $("#cust_addr").keyup(function () {
+        $("#cust_addr_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+
+    function comp_det_btn() {
+        var comp_name = $('#comp_name').val();
+        var comp_no = $('#comp_no').val();
+        var gst_vat_no = $('#gst_vat_no').val();
+        var comp_type = $('#comp_type').val();
+        var postal_addr = $('#postal_addr').val();
+        var phy_addr = $('#phy_addr').val();
+        var comp_web = $('#comp_web').val();
+
+        if (comp_name == "") {
+            $('#comp_name_error').show()
+            $('#comp_name').focus()
+
+        } else if (comp_no == "") {
+            $('#comp_no_error').show()
+            $('#comp_no').focus()
+        }
+        else if (gst_vat_no == "") {
+            $('#comp_gst_vat_no_error').show()
+            $('#gst_vat_no').focus()
+        }
+        else if (comp_type == "") {
+            $('#comp_type_error').show()
+            $('#comp_type').focus()
+        }
+        else if (postal_addr == "") {
+            $('#comp_postal_addr_error').show()
+            $('#postal_addr').focus()
+        }
+        else if (phy_addr == "") {
+            $('#comp_phy_addr_error').show()
+            $('#phy_addr').focus()
+        }
+        else if (comp_web == "") {
+            $('#comp_web_error').show()
+            $('#comp_web').focus()
+        }
+        else {
+            $("#open-tab3").click(function () {
+                $('#tab1').hide()
+                $('#tab2').hide()
+                $('#tab3').show()
+                $('#tab4').hide()
+                $('#tab5').hide()
+            })
+        }
+    }
+
+
+    $("#comp_name").keyup(function () {
+        $("#comp_name_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+    $("#comp_no").keyup(function () {
+        $("#comp_no_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+    $("#gst_vat_no").keyup(function () {
+        $("#comp_gst_vat_no_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+    $("#comp_type").keyup(function () {
+        $("#comp_type_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+    $("#comp_postal_addr").keyup(function () {
+        $("#comp_postal_addr_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+    $("#comp_phy_addr").keyup(function () {
+        $("#comp_phy_addr_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+    $("#comp_web").keyup(function () {
+        $("#comp_web_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+    $("#cust_details").addClass('active');
+    $("li").removeClass('active');
+
+    function ac_det_btn() {
+        var dir_name = $('#dir_name').val();
+        var dir_mobile = $('#dir_mobile').val();
+        var dir_phone = $('#dir_phone').val();
+        var dir_addr = $('#dir_addr').val();
+        var trade_ref_1 = $('#trade_ref_1').val();
+        var trade_ref_2 = $('#trade_ref_2').val();
+        var trade_ref_3 = $('#trade_ref_3').val();
+        var trade_ref_3 = $('#trade_ref_3').val();
+        var status = $('#status').val();
+        var notes = $('#notes').val();
+
+        if (dir_name == "") {
+            $('#dir_name_error').show()
+            $('#dir_name').focus()
+
+        } else if (dir_mobile == "" || dir_phone == "") {
+            $('#dir_mobile_error').show()
+            $('#dir_mobile').focus()
+        }
+        else if (dir_addr == "") {
+            $('#dir_addr_error').show()
+            $('#dir_addr').focus()
+        }
+        else if (trade_ref_1 == "") {
+            $('#trade_ref_1_error').show()
+            $('#trade_ref_1').focus()
+        }
+        else if (trade_ref_2 == "") {
+            $('#trade_ref_2_error').show()
+            $('#trade_ref_2').focus()
+        }
+        else if (trade_ref_3 == "") {
+            $('#trade_ref_3_error').show()
+            $('#trade_ref_3').focus()
+        }
+        else if (status == "") {
+            $('#status_error').show()
+            $('#status').focus()
+        }
+        else if (notes == "") {
+            $('#notes_error').show()
+            $('#notes').focus()
+        }
+        else {
+            $("#open-tab4").click(function () {
+                $('#tab1').hide()
+                $('#tab2').hide()
+                $('#tab3').hide()
+                $('#tab4').show()
+                $('#tab5').hide()
+            })
+        }
+    }
+
+    $("#dir_name").keyup(function () {
+        $("#dir_name_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+    $("#dir_mobile").keyup(function () {
+        $("#dir_mobile_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+    $("#dir_phone").keyup(function () {
+        $("#dir_phone_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+    $("#dir_phone").keyup(function () {
+        $("#dir_phone_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+    $("#dir_addr").keyup(function () {
+        $("#dir_addr_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+    $("#trade_ref_1").keyup(function () {
+        $("#trade_ref_1_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+    $("#trade_ref_2").keyup(function () {
+        $("#trade_ref_2_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+
+    $("#trade_ref_3").keyup(function () {
+        $("#trade_ref_3_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+    $("#status").keyup(function () {
+        $("#status_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+
+    function finan_det_btn() {
+        pay_period = $('#pay_period').val();
+        comp_sal_disc = $('#comp_sal_disc').val();
+
+        if (pay_period == "") {
+            $('#pay_period_error').show()
+            $('#pay_period').focus()
+
+        } else if (comp_sal_disc == "") {
+            $('#comp_sal_disc_error').show()
+            $('#comp_sal_disc').focus()
+
+        } else {
+            $("#open-tab5").click(function () {
+                $('#tab1').hide()
+                $('#tab2').hide()
+                $('#tab3').hide()
+                $('#tab4').hide()
+                $('#tab5').show()
+            })
+        }
+    }
+
+    $("#pay_period").keyup(function () {
+        $("#pay_period_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+ 
+    $("#comp_sal_disc").keyup(function () {
+        $("#comp_sal_disc_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+
+    
+
+    function save() {
+        var cust_name = $("#cust_name").val();
+        var cust_phone = $("#cust_phone").val();
+        var cust_mobile = $("#cust_mobile").val();
+        var cust_email = $("#cust_email").val();
+        var cust_skype = $("#cust_skype").val();
+        var cust_addr = $("#cust_addr").val();
+        var comp_name = $("#comp_name").val();
+        var comp_no = $("#comp_no").val();
+        var gst_vat_no = $("#gst_vat_no").val();
+        var comp_type = $("#comp_type").val();
+        var postal_addr = $("#postal_addr").val();
+        var phy_addr = $("#phy_addr").val();
+        var comp_web = $("#comp_web").val();
+        var comp_web = $("#comp_web").val();
+        var dir_name = $("#dir_name").val();
+        var dir_mobile = $("#dir_mobile").val();
+        var dir_phone = $("#dir_phone").val();
+        var dir_addr = $("#dir_addr").val();
+        var trade_ref_1 = $("#trade_ref_1").val();
+        var trade_ref_2 = $("#trade_ref_2").val();
+        var trade_ref_3 = $("#trade_ref_3").val();
+        var trade_ref_3 = $("#trade_ref_3").val();
+        var status = $("#status").val();
+        var notes = $("#notes").val();
+        var notif = $("#notif").val();
+        var pay_met = $("#pay_met").val();
+        var pay_period = $("#pay_period").val();
+        var comp_sal_disc = $("#comp_sal_disc").val();
+        var user_name = $("#user_name").val();
+        var user_pass = $("#user_pass").val();
+        var role_name = $("#role_name").val();
+
+        if (user_name == "") {
+            $('#user_name_error').show()
+            $('#user_name').focus()
+
+        } else if (user_pass == "") {
+            $('#user_pass_error').show()
+            $('#user_pass').focus()
+
+        }
+
+        $.ajax({
+            method: "POST",
+            url: "/cust_det_get/",
+            data: {
+                cust_name: cust_name,
+                cust_phone: cust_phone,
+                cust_mobile: cust_mobile,
+                cust_email: cust_email,
+                cust_skype: cust_skype,
+                cust_addr: cust_addr,
+
+                comp_name: comp_name,
+                comp_no: comp_no,
+                gst_vat_no: gst_vat_no,
+                comp_type: comp_type,
+                postal_addr: postal_addr,
+                phy_addr: phy_addr,
+                comp_web: comp_web,
+                comp_web: comp_web,
+
+                dir_name: dir_name,
+                dir_mobile: dir_mobile,
+                dir_phone: dir_phone,
+                dir_addr: dir_addr,
+                trade_ref_1: trade_ref_1,
+                trade_ref_2: trade_ref_2,
+                trade_ref_3: trade_ref_3,
+                status: status,
+                notes: notes,
+
+                notif: notif,
+                pay_met: pay_met,
+                pay_period: pay_period,
+                comp_sal_disc: comp_sal_disc,
+
+                user_name: user_name,
+                user_pass: user_pass,
+                role_name: role_name,
+            },
+            success: function (response) {
+                console.log(response);
+                if (response == "success") {
+                    Swal.fire("Success", "New Customer Has been added", "success")
+                    location.reload();
+                } else {
+                    alert("Error");
+                    console.log(response);
+                }
+            },
+        });
+    }
+
+
+    $("#user_name").keyup(function () {
+        $("#user_name_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+ 
+    $("#user_pass").keyup(function () {
+        $("#user_pass_error").hide();
+        $("#invalid_error").hide();
+        $("#error").hide();
+    });
+
+    $(document).ready(function () {
+        $(".selectgroup-input").click(function () {
+            var txte = "";
+            $(".selectgroup-input:checked").each(function () {
+                txte += $(this).val() + ",  ";
+            });
+            txte = txte.substring(0, txte.length - 1);
+            $("#notif").val(txte);
+        });
+    });
+
+    const radio_btn = document.querySelector("#open-tab5");
+    const radio_button = document.querySelectorAll('input[name="size"]');
+    radio_btn.addEventListener("click", () => {
+        let selectMethod;
+        for (const radio_buttons of radio_button) {
+            if (radio_buttons.checked) {
+                selectMethod = radio_buttons.value;
+                break;
+            }
+        }
+        $("#pay_met").val(selectMethod);
+    });
+</script>
+
+{% include 'footer.html' %}

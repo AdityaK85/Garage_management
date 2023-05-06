@@ -1,0 +1,125 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'assets/css/app.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/components.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="{% static 'assets/img/favicon.ico' %} "
+    />
+  </head>
+  <body>
+    <center>
+      <h2 class="my-lg-5">REGISTER AND LOGIN</h2>
+      <div class="col-12 col-md-4 col-lg-4 my-lg-5">
+        <div class="pricing pricing-highlight">
+          <div class="pricing-title">Sign-In Here</div>
+          <div class="pricing-padding">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="user_name"
+                placeholder="User Name"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="email"
+                id="user_email"
+                class="form-control"
+                placeholder="User Email"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                id="user_pass"
+                class="form-control"
+                placeholder="password"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                id="user_conf_pass"
+                class="form-control"
+                placeholder="Confirm Password"
+              />
+            </div>
+          </div>
+          <div class="text-right mr-5">
+            <a href="/" class="text-warning">Click here to login</a>
+          </div>
+          <div class="pricing-cta">
+            <a onclick="register()"
+              >Register <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </center>
+    <script src="{% static 'assets/js/app.min.js' %} "></script>
+    <script src="{% static 'assets/js/scripts.js' %} "></script>
+    <script src="{% static 'assets/js/custom.js' %} "></script>
+    <script src="{% static 'assets/bundles/sweetalert/sweetalert.min.js' %} "></script>
+    <script src="{% static 'assets/js/page/sweetalert.js' %} "></script>
+
+    <script>
+      function register() {
+        var user_name = $("#user_name").val();
+        var user_email = $("#user_email").val();
+        var user_pass = $("#user_pass").val();
+        var user_conf_pass = $("#user_conf_pass").val();
+
+        if (user_name == "") {
+          swal("Check Username", "You clicked the button!", "error");
+        } else if (user_email == "") {
+          swal("Check Email ", "You clicked the button!", "error");
+        } else if (user_pass == "") {
+          swal("Check Password", "You clicked the button!", "error");
+        } else if (user_conf_pass == "") {
+          swal("Check Confirm Password", "You clicked the button!", "error");
+        } else {
+          $.ajax({
+            method: "POST",
+            url: "/register_handle/",
+            data: {
+              user_name,
+              user_email,
+              user_pass,
+              user_conf_pass,
+            },
+            success: function (response) {
+              console.log(response);
+              if (response == 1) {
+                swal(
+                  "Successfully Registered",
+                  "Redirect To Login Page...",
+                  "success"
+                ).then(function () {
+                  window.location.href = "/";
+                });;
+              } else if (response == "exists") {
+                swal("Email Already Exists", "Change Your email", "error");
+              } else if (response == "not match") {
+                swal("Password not matching", "Check Your Password", "error");
+              } else {
+                swal("Try Again Later", "You clicked the button!", "error");
+              }
+            },
+          });
+        }
+      }
+    </script>
+  </body>
+</html>

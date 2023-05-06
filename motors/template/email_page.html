@@ -1,0 +1,339 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+.text-color{
+  color:red;
+}
+  </style>
+
+
+
+</head>
+<body>
+  
+
+
+
+  
+
+
+<div class="main-content">
+  <section class="section">
+    <div class="section">
+      <div class="section-body">
+        <div class="card">
+          <div class="card-body">
+            <ul class="breadcrumb breadcrumb-style" style="background: #f3f3f3">
+              <li class="breadcrumb-item">
+                <h5 class="page-title m-b-0">Quotation Details</h5>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="/dashboard/"> <i class="fas fa-home"></i></a>
+              </li>
+            </ul>
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="form-group">
+                  <label class="text-color">Customer name</label>
+                  <input
+                    type="text"
+                    id="cust_name"
+                    class="form-control"
+                    name="quotation_no"
+                    tabindex="1"
+                    required
+                    autofocus
+                    value="{{cust_name}}"
+                    readonly
+                    placeholder="Quotation number"
+                  />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="veh_name">Quotation no.</label>
+                  <input
+                    type="number"
+                    id="quotation_no"
+                    class="form-control"
+                    name="quotation_no"
+                    tabindex="1"
+                    required
+                    autofocus
+                    value="{{quotation_no}}"
+                    readonly
+                    placeholder="Quotation number"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-2">
+                <div class="form-group">
+                  <label for="veh_reg_date">Quotation date</label>
+                  <input
+                    type="date"
+                    id="quot_date"
+                    class="form-control"
+                    name="quot_date"
+                    tabindex="1"
+                    required
+                    autofocus
+                    value="{{quot_date}}"
+                    readonly
+                    placeholder="Registration date"
+                  />
+                </div>
+              </div>
+              <!-- <br /> -->
+
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="veh_year">Address</label>
+                  <input
+                    type="text"
+                    id="cust_addr"
+                    class="form-control"
+                    name="cust_addr"
+                    tabindex="1"
+                    required
+                    autofocus
+                    value="{{cust_addr}}"
+                    readonly
+                    placeholder="Address"
+                  />
+                </div>
+              </div>
+              <br />
+
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="veh_year"> Phone</label>
+                  <input
+                    type="number"
+                    id="cust_phone"
+                    class="form-control"
+                    name="cust_phone"
+                    tabindex="1"
+                    required
+                    autofocus
+                    readonly
+                    value="{{cust_phone}}"
+                    placeholder="Phone number"
+                  />
+                </div>
+              </div>
+              <br />
+
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label>Registration number</label>
+                  <input
+                    type="text"
+                    id="notes"
+                    class="form-control"
+                    name="notes"
+                    tabindex="1"
+                    required
+                    autofocus
+                    readonly
+                    value="{{veh_reg_no}}"
+                    placeholder="Details"
+                  />
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="veh_year"> Details</label>
+                  <input
+                    type="text"
+                    id="notes"
+                    class="form-control"
+                    name="notes"
+                    tabindex="1"
+                    required
+                    autofocus
+                    readonly
+                    value="{{notes}}"
+                    placeholder="Details"
+                  />
+                </div>
+              </div>
+
+              <!-- Jobs  -->
+
+              <div class="card-body">
+                <ul
+                  class="breadcrumb breadcrumb-style"
+                  style="background: #f3f3f3"
+                >
+                  <li class="breadcrumb-item">
+                    <h5 class="page-title m-b-0">Jobs Cards</h5>
+                  </li>
+                </ul>
+                <div class="form-row">
+                  <div class="form-group col-6">
+                    <label for="inputEmail4">Jobs </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="job_name"
+                      name="job_name"
+                      value="{{job_name}}"
+                      readonly
+                      placeholder="jobs"
+                    />
+                  </div>
+                  <div class="form-group col-6">
+                    <label for="inputPassword4">Rates</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="rates"
+                      name="rates"
+                      value="{{rates}}"
+                      placeholder="Rates"
+                      readonly
+                    />
+                  </div>
+                  <div class="form-group col-12">
+                    <label for="inputPassword4">Notes</label>
+                    <textarea
+                      name="note"
+                      id="note"
+                      class="form-control"
+                      ols="30"
+                      rows="10"
+                      readonly
+                    >
+{{note}}</textarea
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-body">
+                <ul
+                  class="breadcrumb breadcrumb-style"
+                  style="background: #f3f3f3"
+                >
+                  <li class="breadcrumb-item">
+                    <h5 class="page-title m-b-0">Parts details</h5>
+                  </li>
+                </ul>
+                <div class="form-row parts_data">
+                  <div class="form-group col-4">
+                    <label for="items">Items </label>
+                    <input
+                      type="text"
+                      class="form-control avai_qty"
+                      value="{{items}}"
+                      readonly
+                      placeholder="Availale Quatity"
+                    />
+                  </div>
+                  <div class="form-group col-4">
+                    <label for="availale_qty">Available Quatity</label>
+                    <input
+                      type="text"
+                      class="form-control avai_qty"
+                      name="availale_qty"
+                      id="availale_qty"
+                      readonly
+                      value="{{availale_qty}}"
+                      placeholder="Availale Quatity"
+                    />
+                  </div>
+                  <div class="form-group col-lg-4">
+                    <label for="inputPassword4">Quatity</label>
+                    <div class="input-group mb-4">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">
+                          <i class="fas fa-store-alt"></i>
+                        </div>
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control change_qty"
+                        id="qty"
+                        name="qty"
+                        value="{{qty}}"
+                        readonly
+                        placeholder="Quatity"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group col-lg-4">
+                    <label for="price">Per item Price</label>
+                    <div class="input-group mb-4">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">
+                          <i class="fas fa-rupee-sign"></i>
+                        </div>
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="price"
+                        name="price"
+                        value="{{price}}"
+                        readonly
+                        placeholder="per Items rates"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group col-lg-4">
+                    <label for="inputPassword4">Product Price</label>
+                    <div class="input-group mb-4">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">
+                          <i class="fas fa-rupee-sign"></i>
+                        </div>
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="total_price"
+                        name="total_price"
+                        value="{{total_price}}"
+                        readonly
+                        placeholder="Product Price"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group col-lg-4">
+                    <label for="inputPassword4">Total</label>
+                    <div class="input-group mb-4">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">
+                          <i class="fab fa-dropbox"></i>
+                        </div>
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="allTotal"
+                        value="{{allTotal}}"
+                        readonly
+                        placeholder="Qty :  Price : "
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

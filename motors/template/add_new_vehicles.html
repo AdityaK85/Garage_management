@@ -1,0 +1,186 @@
+{% include 'header.html' %}
+
+<div class="main-content">
+  <section class="section">
+    <div class="section-body">
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-7">
+          <div class="card">
+            <div class="card-body">
+              <ul
+                class="breadcrumb breadcrumb-style"
+                style="background: #f3f3f3"
+              >
+                <li class="breadcrumb-item">
+                  <h5 class="page-title m-b-0">Add New Vehicle</h5>
+                </li>
+                <li class="breadcrumb-item">
+                  <a href="/dashboard/"> <i class="fas fa-home"></i></a>
+                </li>
+              </ul>
+              <div class="form-group">
+                  <label>Customer name</label>
+                  <select
+                    class="form-control selectric"
+                    name="cust_name"
+                    id="cust_name"
+                  >
+                    {% for i in obj %}
+                    <option value="{{i.id}}">{{i.cust_name}}</option>
+                    {% endfor %}
+                  </select>
+              </div>
+              <div class="form-group">
+                <label for="veh_name">Vehicle Name</label>
+                <input
+                  type="text"
+                  id="veh_name"
+                  class="form-control"
+                  name="veh_name"
+                  tabindex="1"
+                  required
+                  autofocus
+                  placeholder="Vehicle name"
+                />
+                <div class="valid-feedback" id="veh_name_error" >Vehicle Name Invalid!</div>
+              </div>
+              <label for="veh_year">Vehicle Year</label>
+              <input
+                type="number"
+                id="veh_year"
+                class="form-control"
+                name="veh_year"
+                tabindex="1"
+                required
+                autofocus
+                placeholder="Year"
+              />
+              <div class="valid-feedback" id="veh_invalid_year_error" >Invalid year!</div>
+              <div class="valid-feedback" id="veh_year_error" >Invalid year!</div>
+              <br />
+
+              <label for="veh_reg_date">Registration date</label>
+              <input
+                type="date"
+                id="veh_reg_date"
+                class="form-control"
+                name="veh_reg_date"
+                tabindex="1"
+                required
+                autofocus
+                placeholder="Registration date"
+              />
+              <div class="valid-feedback" id="veh_reg_date_error" >Registration Date Invalid!</div>
+              <br />
+
+              <label for="veh_year">Registrations number</label>
+              <input
+                type="number"
+                id="veh_reg_no"
+                class="form-control"
+                name="veh_reg_no"
+                tabindex="1"
+                required
+                autofocus
+                placeholder="Registrations number"
+              />
+              <div class="valid-feedback" id="veh_reg_no_error" >Registrations number Invalid!</div>
+              <br />
+
+              <center>
+                <button
+                  type="button"
+                  class="btn btn-success"
+                  value="save"
+                  onclick="sumbit()"
+                >
+                  Save
+                </button>
+              </center>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  function sumbit() {
+    var cust_name = $("#cust_name").val();
+    var veh_name = $("#veh_name").val();
+    var veh_year = $("#veh_year").val();
+    var veh_reg_date = $("#veh_reg_date").val();
+    var veh_reg_no = $("#veh_reg_no").val();
+
+    if (veh_name == "") {
+      $('#veh_name_error').show()
+      $('#veh_name').focus()
+
+    } else if (veh_year == "") {
+      $('#veh_year_error').show()
+      $('#veh_year').focus()
+
+    } else if (veh_year.length > 4 || veh_year < 4) {
+      $('#veh_invalid_year_error').show()
+      $('#veh_year').focus()
+      
+    } else if (veh_reg_date == "") {
+      $('#veh_reg_date_error').show()
+      $('#veh_reg_date').focus()
+
+    } else if (veh_reg_no == "") {
+      $('#veh_reg_no_error').show()
+      $('#veh_reg_no').focus()
+
+    } else {
+      $.ajax({
+        method: "POST",
+        url: "/vehicle_details_get/",
+        data: {
+          cust_name: cust_name,
+          veh_name: veh_name,
+          veh_year: veh_year,
+          veh_reg_date: veh_reg_date,
+          veh_reg_no: veh_reg_no,
+        },
+        success: function (response) {
+          console.log(response);
+          if (response == "success") {
+            location.reload();
+          } else {
+            alert("Invalid Details");
+          }
+        },
+      });
+    }
+  }
+
+  $("#veh_name").keyup(function () {
+    $("#veh_name_error").hide();
+    $("#invalid_error").hide();
+    $("#error").hide();
+});
+
+  $("#veh_year").keyup(function () {
+    $("#veh_year_error").hide();
+    $("#invalid_error").hide();
+    $("#error").hide();
+});
+
+  $("#veh_reg_date").keyup(function () {
+    $("#veh_reg_date_error").hide();
+    $("#invalid_error").hide();
+    $("#error").hide();
+});
+
+  $("#veh_reg_no").keyup(function () {
+    $("#veh_reg_no_error").hide();
+    $("#invalid_error").hide();
+    $("#error").hide();
+});
+
+</script>
+
+{% include 'footer.html' %}

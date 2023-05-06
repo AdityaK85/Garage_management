@@ -1,0 +1,98 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'assets/css/app.min.css' %} " />
+    <link rel="stylesheet" href="{% static 'assets/css/style.cs' %} s" />
+    <link rel="stylesheet" href="{% static 'assets/css/components.css' %} " />
+    <link rel="stylesheet" href="{% static 'assets/css/custom.cs' %}" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="{% static 'assets/img/favicon.ico' %} "
+    />
+  </head>
+  <body >
+    <center>
+      <h2 class="my-lg-5">REGISTER AND LOGIN</h2>
+      <div class="col-12 col-md-4 col-lg-4 my-lg-5">
+        <div class="pricing pricing-highlight">
+          <div class="pricing-title">Log-In Here</div>
+          <div class="pricing-padding">
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="user_name"
+                placeholder="User Name"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="user_password"
+                placeholder="Password"
+              />
+            </div>
+          </div>
+          <div class="text-right mr-5">
+            <a href="/sign_in" class="text-warning">Click here to Register</a>
+          </div>
+          <div class="pricing-cta">
+            <a onclick="login()">Login Now<i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </center>
+    <script src="{% static 'assets/js/app.min.js' %} "></script>
+    <script src="{% static 'assets/js/scripts.js' %} "></script>
+    <script src="{% static 'assets/js/custom.js' %} "></script>
+    <script src="{% static 'assets/bundles/sweetalert/sweetalert.min.js' %} "></script>
+    <script src="{% static 'assets/js/page/sweetalert.js' %} "></script>
+
+    <script>
+      function login() {
+        var user_name = $("#user_name").val();
+        var user_password = $("#user_password").val();
+        console.log(user_password);
+
+        if (user_name == "") {
+          swal("Check Email ", "Check your Username  ", "error");
+        } else if ((user_pass = "")) {
+          swal("Check Password", "Check your password ", "error");
+        } else {
+          $.ajax({
+            method: "POST",
+            url: "/handle_login/",
+            data: {
+              user_name,
+              user_password,
+            },
+            success: function (response) {
+              console.log(response);
+              if (response == "0") {
+                swal(
+                  "Login Successful",
+                  `Hello ! ${user_name}`,
+                  "success"
+                ).then(function () {
+                  window.location.href = "/dashboard";
+                });
+              } else if ((response = "1")) {
+                swal("Invalid Credentials", `Login Again`, "error");
+              } else if (response == "error") {
+                swal("Try Again Later", `Something Went Wrong`, "error");
+              }
+            },
+          });
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,135 @@
+
+    {% include 'header.html' %} {% load static %}
+<div class="main-content">
+  <div class="section-body">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h4>Mechanic's details</h4>
+          </div>
+          <div class="card-body">
+            <div class="row mx-4">
+              <div class="col-12">
+                <div class="row">
+                </div>
+              </div>
+            </div>
+            <div id="table_div">
+              <div class="table-responsive">
+                <table class="table table-striped"  id="table-1">
+                  <thead>
+                    <tr>
+                      <th class="text-center">No.</th>
+                      <th>Mechanic Name</th>
+                      <th>AGE</th>
+                      <th>Mobile</th>
+                      <th>Address</th>
+                      <th>Mechanic Type</th>
+                      <th>Experience</th>
+                      <th>Update | Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for i in obj %}
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{i.name}}</td>
+                      <td>{{i.age}}</td>
+                      <td>{{i.mobile}}</td>
+                      <td>{{i.address}}</td>
+                      <td>{{i.machanic_type}}</td>
+                      <td>{{i.no_of_exper}}</td>
+                      <td>
+                        <a
+                          href="/edit_mech/{{i.id}}"
+                          class="badge badge-success"
+                          style="color: white"
+                          >View</a
+                        >
+                        <a
+                          class="badge badge-success"
+                          onclick="delete_mech('{{i.id}}')"
+                          style="color: white"
+                          >Delete</a
+                        >
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+<script src="https://editor.datatables.net/extensions/Editor/css/editor.dataTables.min.css"></script>
+
+<script>
+
+$('.createDate').hide()
+
+  $("#save-table").DataTable({
+    dom: "lBfrtip",
+    buttons: [
+      {
+        extend: "csv",
+        text: `export`,
+        title: "Vehicles Details",
+        exportOptions: { modifier: { page: 'all'} }
+      },
+    ],
+  });
+
+
+  function delete_mech(id) {
+    console.log(id);
+    swal({
+      title: "Are you sure?",
+      text: "",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        $.ajax({
+          method: "POST",
+          url: "/delete_mech/",
+          data: {
+            id: id,
+          },
+          success: function (response) {
+            if (response == "success") {
+              swal("Mechanic Details Deleted!", {
+                icon: "success",
+                button: "Ok",
+                closeOnClickOutside: false,
+              }).then(function () {
+                location.reload();
+              });
+            }
+          },
+        });
+      }
+    });
+  }
+
+
+</script>
+
+{% include 'footer.html' %}
+

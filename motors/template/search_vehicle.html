@@ -1,0 +1,80 @@
+<div id="table_div">
+    <div class="table-responsive">
+      <table class="table table-striped" id="table-1">
+        <thead>
+          <tr>
+            <th class="text-center">No.</th>
+            <th>Customer Name</th>
+            <th>Vehicle Name</th>
+            <th>Year</th>
+            <th>Vehicle Registrations date</th>
+            <th>Vehicle Registrations no</th>
+            <th>Update</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in obj1 %}
+          <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.fk_user}}</td>
+            <td>{{i.veh_name}}</td>
+            <td>{{i.veh_year}}</td>
+            <td>{{i.veh_reg_date}}</td>
+            <td>{{i.veh_reg_no}}</td>
+            <td>
+              <a
+                href="/edit/{{i.id}}"
+                class="badge badge-success"
+                style="color: white"
+                >View</a
+              >
+            </td>
+            <td>
+              <a
+                class="badge badge-success"
+                onclick="delete_veh('{{i.id}}')"
+                style="color: white"
+                >Delete</a
+              >
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<script>
+  function delete_veh(id) {
+    console.log(id);
+    swal({
+      title: "Are you sure?",
+      text: "",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        $.ajax({
+          method: "POST",
+          url: "/delete/",
+          data: {
+            id: id,
+          },
+          success: function (response) {
+            if (response == "success") {
+              swal("Book has been Deleted!", {
+                icon: "success",
+                button: "Ok",
+                closeOnClickOutside: false,
+              }).then(function () {
+                location.reload();
+              });
+            }
+          },
+        });
+      }
+    });
+  }
+</script>

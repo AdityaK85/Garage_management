@@ -1,0 +1,548 @@
+{% include 'header.html' %}
+<div class="main-content">
+  <section class="section">
+    <div class="section">
+      <div class="section-body">
+        <div class="card">
+          <div class="card-header " style="background-color: rgb(219, 226, 235)">
+            <a href="/dashboard/"><i class="fas fa-home"></i></a>
+            <h5 class="mt-2 ml-3">Job Order</h5>
+          </div>
+          <form action="/update_job/{{obj_id.id}}" method="post">
+          <div class="card-body">
+            <div class="form-group row mt-2">
+              <label for="inputEmail3" class="col-sm-2 col-form-label"
+                >Customer name</label
+              >
+              <div class="col-sm-4">
+                <input
+                  type="text"
+                  id="cust_name"
+                  class="form-control form"
+                  name="cust_name"
+                  tabindex="1"
+                  required
+                  autofocus
+                  value= "{{obj_id.cust_name}}"
+                  placeholder="Address"
+                  readonly
+                />
+              </div>
+
+              <label for="inputPassword3" class="col-sm-2 col-form-label"
+                >Quotation no.</label
+              >
+              <div class="col-sm-4">
+                <input
+                  type="number"
+                  id="quotation_no"
+                  class="form-control"
+                  name="quotation_no"
+                  value= "{{obj_id.quotation_no}}"
+                  tabindex="1"
+                  required
+                  autofocus
+                  placeholder="Quotation number"
+                  readonly
+                />
+              </div>
+
+              <label for="inputEmail3" class="col-sm-2 col-form-label"
+                >Address</label
+              >
+              <div class="col-sm-4 mt-2">
+                <input
+                  type="text"
+                  id="cust_addr"
+                  class="form-control form"
+                  name="cust_addr"
+                  tabindex="1"
+                  value= "{{obj_id.cust_addr}}"
+                  required
+                  autofocus
+                  placeholder="Address"
+                  readonly
+                />
+              </div>
+
+              <label for="inputPassword3" class="col-sm-2 col-form-label"
+                >Registration number</label
+              >
+              <div class="col-sm-4 mt-2">
+                <select
+                  class="form-control select2"
+                  name="veh_reg_no"
+                  id="veh_reg_no"
+                  value= {{obj_id.veh_reg_no}}
+                ></select>
+              </div>
+
+              <label for="inputEmail3" class="col-sm-2 col-form-label"
+                >Phone</label
+              >
+              <div class="col-sm-4 mt-2">
+                <input
+                  type="number"
+                  id="cust_phone"
+                  class="form-control"
+                  name="cust_phone"
+                  tabindex="1"
+                  readonly
+                  value= {{obj_id.cust_phone}}
+                  required
+                  autofocus
+                  placeholder="Phone number"
+                />
+              </div>
+
+              <label for="inputPassword3" class="col-sm-2 col-form-label"
+                >Reference</label
+              >
+              <div class="col-sm-4 mt-2">
+                <input
+                  type="cust_refer"
+                  id="cust_refer"
+                  class="form-control"
+                  name="refer"
+                  tabindex="1"
+                  value= {{obj_id.cust_refer}}
+                  required
+                  autofocus
+                  placeholder="Reference"
+                />
+              </div>
+
+              <label for="inputEmail3" class="col-sm-2 col-form-label"
+                >Mobile</label
+              >
+              <div class="col-sm-4 mt-2">
+                <input
+                  type="number"
+                  id="cust_mobile"
+                  class="form-control"
+                  name="cust_mobile"
+                  readonly
+                  tabindex="1"
+                  value= {{obj_id.cust_mobile}}
+                  required
+                  autofocus
+                  placeholder="Mobile number"
+                />
+              </div>
+
+              <label for="inputEmail3" class="col-sm-2 col-form-label"
+                >Schedule Datetime</label
+              >
+              <div class="col-sm-4 mt-2">
+                <input
+                  type="date"
+                  id="seh_time"
+                  class="form-control"
+                  name="seh_time"
+                  value= {{obj_id.seh_time}}
+                  tabindex="1"
+                  required
+                  autofocus
+                  placeholder="Schedule Datetime"
+                />
+              </div>
+
+              <label for="inputPassword3" class="col-sm-2 col-form-label"
+                >Website</label
+              >
+              <div class="col-sm-4 mt-2">
+                <input
+                  type="text"
+                  id="comp_web"
+                  class="form-control"
+                  name="comp_web"
+                  readonly
+                  tabindex="1"
+                  value= {{obj_id.comp_web}}
+                  required
+                  autofocus
+                  placeholder="Website"
+                />
+              </div>
+
+              <label for="inputEmail3" class="col-sm-2 col-form-label"
+                >Delivery Datetime</label
+              >
+              <div class="col-sm-4 mt-2">
+                <input
+                  type="date"
+                  id="deliver_time"
+                  class="form-control"
+                  name="deliver_time"
+                  value= {{obj_id.deliver_time}}
+                  tabindex="1"
+                  required
+                  autofocus
+                  placeholder="Delivery Datetime"
+                />
+              </div>
+
+              <label for="inputPassword3" class="col-sm-2 col-form-label"
+                >Details</label
+              >
+              <div class="col-sm-4 mt-2">
+                <input
+                  type="text"
+                  id="notes"
+                  class="form-control"
+                  name="notes"
+                  tabindex="1"
+                  required
+                  value= {{obj_id.notes}}
+                  autofocus
+                  placeholder="Details"
+                />
+              </div>
+
+              <label for="inputEmail3" class="col-sm-2 col-form-label"
+                >Alert Via</label
+              >
+              <div class="col-sm-4 mt-2">
+                <div class="form-group">
+                  <div class="selectgroup selectgroup-pills">
+                    <label class="selectgroup-item">
+                      <input
+                        type="radio"
+                        name="alert_via"
+                        value="SMS"
+                        {% if obj_id.alert_via == "SMS" %} checked {% else %} "" {% endif %}
+                        class="selectgroup-input"
+                        
+                      />
+                      <span class="selectgroup-button">SMS</span>
+                    </label>
+                    <label class="selectgroup-item">
+                      <input
+                        type="radio"
+                        value="Email"
+                        name="alert_via"
+                        {% if obj_id.alert_via == "Email" %} checked {% else %} "" {% endif %}
+                        class="selectgroup-input"
+                      />
+                      <span class="selectgroup-button">Email</span>
+                    </label>
+                    <label class="selectgroup-item">
+                      <input
+                        type="radio"
+                        value="Post"
+                        name="alert_via"
+                        value= {{obj_id.alertvia}}
+                        {% if obj_id.alert_via == "Post" %} checked {% else %} "" {% endif %}
+                        class="selectgroup-input"
+                      />
+                      <span class="selectgroup-button">Post</span>
+                    </label>
+                    <label class="selectgroup-item">
+                      <input
+                        type="radio"
+                        value="None"
+                        name="alert_via"
+                        {% if obj_id.alert_via == "None" %} checked {% else %} "" {% endif %}
+                        class="selectgroup-input"
+                      />
+                      <span class="selectgroup-button">None</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="invalid-feedback">
+                  Oh no! Notifications is invalid?
+                </div>
+              </div>
+
+              <div class="card-body">
+                <table class="table table-bordered table-sm">
+                  <thead>
+                    <tr>
+                      <th scope="col">Job Type</th>
+                      <th scope="col">Mechanic</th>
+                      <th scope="col">Customer Note</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td scope="row">
+                        <select
+                          class="form-control selectric"
+                          name="job_type"
+                          id="job_type"
+                          value= "{{obj_id.job_type}}"
+                        >
+                          <option>--Select--</option>
+                          <option selected value= "{{obj_id.job_type}}" >{{obj_id.job_type}}</option>
+                          {% for i in obj1 %}
+                          <option value="{{i.job_type}}">
+                            {{i.job_type}}
+                          </option>
+                          {% endfor %}
+                        </select>
+                      </td>
+                      <td scope="row">
+                        <select
+                          class="form-control selectric"
+                          name="machanic_names"
+                          id="machanic_names"
+                        >
+                          <option>--Select--</option>
+                          <option selected value= "{{obj_id.machanic_names}}" >{{obj_id.machanic_names}}</option>
+                          {% for i in obj2 %}
+                          <option value="{{i.machanic_names}}">
+                            {{i.machanic_names}}
+                          </option>
+                          {% endfor %}
+                        </select>
+                      </td>
+                      <td>
+                        <input
+                          type="text"
+                          id="cust_note"
+                          class="form-control"
+                          name="cust_note"
+                          tabindex="1"
+                          required
+                          value= {{obj_id.cust_note}}
+                          autofocus
+                          placeholder="Details"
+                        />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="text-right">
+              <button class="btn btn-info" id="saveData" type="submit" >Update order</button>
+            </div>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  function select_customer() {
+    var cust_id = $("#cust_id").val();
+    console.log(cust_id);
+
+    $.ajax({
+      method: "POST",
+      url: "/Job_details/",
+      data: {
+        cust_id,
+      },
+      success: function (response) {
+        if (response["msg"] == "success") {
+
+          $("#cust_name").val(response["cust_name"]);
+          $("#cust_addr").val(response["address"]);
+          $("#cust_phone").val(response["phone"]);
+          $("#notes").val(response["notes"]);
+          $("#cust_mobile").val(response["mobile"]);
+          $("#comp_web").val(response["website"]);
+          $("#quotation_no").val(response["quo_data"]);
+          var opt = [];
+          veh = JSON.parse(response["data"]);
+          quo_no = JSON.parse(response["quo_data"]);
+          for (key in veh) {
+            let data = veh[key];
+            console.log(veh[key]);
+            opt = `<option> ${data} </option>`;
+            $("#veh_reg_no").append(opt);
+            opt = [];
+          }
+        }
+      },
+    });
+  }
+
+
+  function delete_veh(id) {
+    console.log(id);
+    swal({
+      title: "Are you sure?",
+      text: "",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        $.ajax({
+          method: "POST",
+          url: "/delete/",
+          data: {
+            id: id,
+          },
+          success: function (response) {
+            if (response == "success") {
+              swal("Book has been Deleted!", {
+                icon: "success",
+                button: "Ok",
+                closeOnClickOutside: false,
+              }).then(function () {
+                location.reload();
+              });
+            }
+          },
+        });
+      }
+    });
+  }
+
+  function submit_job_order() {
+    var cust_name = $("#cust_name").val();
+    var quotation_no = $("#quotation_no").val();
+    var cust_addr = $("#cust_addr").val();
+    var veh_reg_no = $("#veh_reg_no").val();
+    var cust_phone = $("#cust_phone").val();
+    var cust_mobile = $("#cust_mobile").val();
+    var veh_reg_no = $("#veh_reg_no").val();
+    var cust_refer = $("#cust_refer").val();
+    let seh_time = $("#seh_time").val();
+    let deliver_time = $("#deliver_time").val();
+    let cust_note = $("#cust_note").val();
+    var alert_via = $("input[name='alert_via' ]:checked ").val();
+    var job_type = $("#job_type").val();
+    var machanic_names = $("#machanic_names").val();
+    var notes = $("#notes").val();
+
+
+    // if (cust_name == "") {
+    //   $("#cust_name_error").show();
+    //   $("#cust_name").focus();
+    // } else if (quotation_no == "") {
+    //   $("#quotation_number_error").show();
+    //   $("#quotation_no").focus();
+    // } else if (cust_addr == "") {
+    //   $("#cust_addr_error").show();
+    //   $("#cust_addr").focus();
+    // } else if (quot_date == "") {
+    //   $("#quotation_date_error").show();
+    //   $("#quot_date").focus();
+    // } else if (cust_phone == "") {
+    //   $("#cust_phone_error").show();
+    //   $("#cust_phone").focus();
+    // } else if (veh_reg_no == "") {
+    //   $("#veh_reg_no_error").show();
+    //   $("#veh_reg_no").focus();
+    // } else if (notes == "") {
+    //   $("#notes_error").show();
+    //   $("#notes").focus();
+    // } else if (job_name == "") {
+    //   $("#job_name_error").show();
+    //   $("#job_name").focus();
+    // } else if (rates == "") {
+    //   $("#rates_error").show();
+    //   $("#rates").focus();
+    // } else if (note == "") {
+    //   $("#note_error").show();
+    //   $("#note").focus();
+    // } else if (items == "") {
+    //   $("#items_error").show();
+    //   $("#items").focus();
+    // } else if (qty == "") {
+    //   $("#qty_error").show();
+    //   $("#qty").focus();
+    // } else if (qty >= availale_qty) {
+    //   $("#qty_limit_error").show();
+    //   $("#qty").focus();
+    // } else {
+      $.ajax({
+        method: "POST",
+        url: "/store_job_order/",
+        data: {
+          cust_name: cust_name,
+          quotation_no,
+          cust_addr,
+          veh_reg_no,
+          cust_phone,
+          cust_mobile,
+          cust_refer,
+          seh_time,
+          deliver_time,
+          cust_note,
+          alert_via,
+          job_type,
+          machanic_names,
+          notes,
+        },
+        success: function (response) {
+          if (response == "success") {
+            alert("success");
+            $("#cust_name").val("");
+            $("#quotation_no").val("");
+            $("#cust_addr").val("");
+            $("#veh_reg_no").val("");
+            $("#cust_phone").val("");
+            $("#cust_mobile").val("");
+            $("#veh_reg_no").val("");
+            $("#cust_refer").val("");
+            $("#seh_time").val("");
+            $("#deliver_time").val("");
+            $("#cust_note").val("");
+            $("#alert_via").val("");
+            $("#job_type").val("");
+            $("#machanic_names").val("");
+            $("#notes").val("");
+          }
+        },
+      });
+    // }
+  }
+
+
+
+
+
+
+
+
+  $("#cust_name").keyup(function () {
+    $("#cust_name_error").hide();
+    $("#invalid_error").hide();
+    $("#error").hide();
+  });
+
+  $("#quotation_no").keyup(function () {
+    $("#quotation_number_error").hide();
+    $("#invalid_error").hide();
+    $("#error").hide();
+  });
+
+  $("#cust_addr").keyup(function () {
+    $("#cust_addr_error").hide();
+    $("#invalid_error").hide();
+    $("#error").hide();
+  });
+
+  $("#quot_date").keyup(function () {
+    $("#quotation_date_error").hide();
+    $("#invalid_error").hide();
+    $("#error").hide();
+  });
+
+  $("#cust_phone").keyup(function () {
+    $("#cust_phone_error").hide();
+    $("#invalid_error").hide();
+    $("#error").hide();
+  });
+
+  $("#veh_reg_no").keyup(function () {
+    $("#veh_reg_no_error").hide();
+    $("#invalid_error").hide();
+    $("#error").hide();
+  });
+
+  $("#notes").keyup(function () {
+    $("#notes_error").hide();
+    $("#invalid_error").hide();
+    $("#error").hide();
+  });
+</script>
+
+{% include 'footer.html' %}

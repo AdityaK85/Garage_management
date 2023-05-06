@@ -1,0 +1,62 @@
+{% include 'header.html' %}
+
+<div class="main-content">
+    <form method="post" action="/update/{{edit_id.id}}" >
+        <section class="section">
+            <div class="section-body">
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-7">
+                        <div class="card">
+                            <div class="card-body">
+                                <ul class="breadcrumb breadcrumb-style" style="background: #f3f3f3">
+                                    <li class="breadcrumb-item">
+                                        <h5 class="page-title m-b-0">Update Vehicle</h5>
+                                    </li>
+                                    <li class="breadcrumb-item">
+                                        <a href="/dashboard/"> <i class="fas fa-home"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="form-group">
+                                    <label for="veh_name">Customer Name</label>
+                                    <input type="text" id="fk_user" class="form-control" name="fk_user"  readonly tabindex="1"
+                                        required autofocus value="{{edit_id.fk_user}}" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="veh_name">Vehicle Name</label>
+                                    <input type="text" id="veh_name" class="form-control" name="veh_name" tabindex="1"
+                                        required autofocus value="{{edit_id.veh_name}}" />
+                                </div>
+                                <label for="veh_year">Vehicle Year</label>
+                                <input type="number" id="veh_year" class="form-control" name="veh_year" tabindex="1"
+                                    required autofocus value="{{edit_id.veh_year}}" />
+                                <br />
+
+                                <label for="veh_reg_date">Registration date</label>
+                                <input type="date" id="veh_reg_date" class="form-control" name="veh_reg_date"
+                                    tabindex="1" required autofocus value="{{edit_id.veh_reg_date | date:'Y-m-d'}}" />
+                                <br />
+
+                                <label for="veh_year">Registrations number</label>
+                                <input type="number" id="veh_reg_no" class="form-control" name="veh_reg_no" tabindex="1"
+                                    required autofocus value="{{edit_id.veh_reg_no}}" />
+                                <br />
+
+                                <center>
+                                    <button type="submit" class="btn btn-warning" value="save">
+                                        Update
+                                    </button>
+                                    <a href="/dashboard/"><button type="button" class="btn btn-success">
+                                        Back
+                                    </button></a>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+</div>
+
+{% include 'footer.html' %}

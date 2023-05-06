@@ -1,0 +1,131 @@
+{% include 'header.html' %} {% load static %}
+
+<div class="main-content">
+  <section class="section">
+    <ul class="breadcrumb breadcrumb-style">
+      <li class="breadcrumb-item">
+        <h4 class="page-title m-b-0">All details</h4>
+      </li>
+      <li class="breadcrumb-item">
+        <a href="/"> <i class="fas fa-home"></i></a>
+      </li>
+      <li class="breadcrumb-item">Quotations</li>
+      <li class="breadcrumb-item">Manage Quotations</li>
+    </ul>
+    <div class="section-body">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h4>Parts Details</h4>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table
+                  class="table table-striped table-hover"
+                  id="table-2"
+                  style="width: 100%"
+                >
+                  <thead>
+                    <tr>
+                      <th>Customer name</th>
+                      <th>Quotation no</th>
+                      <th>Quotation date</th>
+                      <th>Address</th>
+                      <th>Phone</th>
+                      <th>Registration No.</th>
+                      <th>Details</th>
+                      <th>Jobs</th>
+                      <th>Rates</th>
+                      <th>Notes</th>
+                      <th>Items</th>
+                      <th>Available Quatity</th>
+                      <th>Quatity</th>
+                      <th>Product Price</th>
+                      <th>Price</th>
+                      <th>Total Price</th>
+                      <th>Update</th>
+                      <th>Delete</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for i in quot_det %}
+                    <tr>
+                      <td>{{i.cust_name}}</td>
+                      <td>{{i.quotation_no}}</td>
+                      <td>{{i.quot_date|date:'d-m-Y'}}</td>
+                      <td>{{i.cust_addr}}</td>
+                      <td>{{i.cust_phone}}</td>
+                      <td>{{i.veh_reg_no}}</td>
+                      <td>{{i.notes}}</td>
+                      <td>{{i.job_name}}</td>
+                      <td>{{i.rates}}</td>
+                      <td>{{i.note}}</td>
+                      <td>{{i.items}}</td>
+                      <td>{{i.availale_qty}}</td>
+                      <td>{{i.qty}}</td>
+                      <td>{{i.price}}</td>
+                      <td>{{i.total_price}}</td>
+                      <td>{{i.allTotal}}</td>
+                      <td>
+                        <a
+                          href="/edit-quotation/{{i.id}}"
+                          class="btn btn-icon btn-primary"
+                          ><i class="far fa-edit"></i
+                        ></a>
+                      </td>
+                      <td>
+                        <a class="btn btn-icon btn-danger" onclick="delete_job('{{i.id}}')"
+                          ><i class="fas fa-times"></i
+                        ></a>
+                      </td>
+                    </tr>s
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+<script>
+  function delete_quotation(id) {
+    console.log(id);
+    swal({
+      title: "Are you sure?",
+      text: "",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        $.ajax({
+          method: "POST",
+          url: "/delete_quotation/",
+          data: {
+            id,
+          },
+          success: (response) => {
+            if (response == "success") {
+              swal("Book has been Deleted!", {
+                icon: "success",
+                button: "Ok",
+                closeOnClickOutside: false,
+              }).then(function () {
+                location.reload();
+              });
+            }
+          },
+        });
+      }
+    });
+  }
+</script>
+
+{% include 'footer.html' %}

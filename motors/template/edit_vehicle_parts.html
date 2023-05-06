@@ -1,0 +1,154 @@
+{% include 'header.html' %}
+<div class="main-content">
+  <section class="section">
+    <div class="section">
+      <div class="section-body">
+        <div class="card">
+          <div class="card-body">
+            <ul class="breadcrumb breadcrumb-style" style="background: #f3f3f3">
+              <li class="breadcrumb-item">
+                <h5 class="page-title m-b-0">Update </h5>
+              </li>
+            </ul>
+            <form
+              method="post"
+              action="/update_vehicle_parts/{{edit_parts.id}}"
+            >
+              <div class="form-row parts_data">
+                <div class="form-group col-6">
+                  <label for="inputEmail4">Items </label>
+                  <input
+                    type="text"
+                    class="form-control avai_qty"
+                    id="items"
+                    name="items"
+                    readonly
+                    value="{{edit_parts.items}}"
+                  />
+                  <div class="valid-feedback" id="items_error">
+                    Items Invalid !
+                  </div>
+                </div>
+                <div class="form-group col-6">
+                  <label for="availale_qty">Available Quatity</label>
+                  <input
+                    type="text"
+                    class="form-control avai_qty"
+                    name="availale_qty"
+                    id="availale_qty"
+                    readonly
+                    value="{{edit_parts.availale_qty}}"
+                    placeholder="Availale Quatity"
+                  />
+                </div>
+                <div class="form-group mx-1">
+                  <label for="inputPassword4">Quatity</label>
+                  <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="fas fa-store-alt"></i>
+                      </div>
+                    </div>
+                    <input
+                      type="number"
+                      class="form-control change_qty"
+                      id="qty"
+                      name="qty"
+                      value="{{edit_parts.qty}}"
+                      placeholder="Quatity"
+                    />
+                    <div class="valid-feedback" id="qty_error">
+                      Qty Invalid !
+                    </div>
+                    <div class="valid-feedback" id="qty_limit_error">
+                      Enter Quatity is greater than Available Quatity !
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group mx-1">
+                  <label for="price">Per item Price</label>
+                  <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="fas fa-rupee-sign"></i>
+                      </div>
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="price"
+                      name="price"
+                      readonly
+                      value="{{edit_parts.price}}"
+                      placeholder="per Items rates"
+                    />
+                  </div>
+                </div>
+                <div class="form-group mx-1">
+                  <label for="inputPassword4">Product Price</label>
+                  <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="fas fa-rupee-sign"></i>
+                      </div>
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="total_price"
+                      name="total_price"
+                      readonly
+                      value="{{edit_parts.total_price}}"
+                      placeholder="Product Price"
+                    />
+                  </div>
+                </div>
+                <div class="form-group mx-1">
+                  <label for="inputPassword4">Total</label>
+                  <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">
+                        <i class="fab fa-dropbox"></i>
+                      </div>
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="allTotal"
+                      name="allTotal"
+                      readonly
+                      value="{{edit_parts.allTotal}}"
+                      placeholder="Qty :  Price : "
+                    />
+                  </div>
+                </div>
+                <div class="form-group mx-1 text-right">
+                  <div class="input-group mb-4">
+                    <div class="input-group-prepend"></div>
+                  </div>
+                  <button type="submit" class="btn btn-success my-2">
+                    <i class="fas fa-money-check-alt"></i> Update
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  $("#price ,#qty").keyup(function () {
+    let total = 0;
+    let prodPrice = $("#price").val();
+    let prodQty = Number($("#qty").val());
+
+    total = prodPrice * prodQty;
+    $("#total_price").val(total);
+    total_msg = `Qty : ${prodQty} Price : ${total}`;
+
+    $("#allTotal").val(total_msg);
+  });
+</script>

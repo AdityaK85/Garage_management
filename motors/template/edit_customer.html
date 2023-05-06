@@ -1,0 +1,481 @@
+{% include 'header.html' %}
+
+
+<div class="main-content" id="tab1">
+    <form method="post" action="/update_customer/{{edit_cust.id}}">
+    <div class="card">
+        <div class="card-header">
+            <h4>Update customer</h4>
+        </div>
+        <div class="card-body">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Customer name</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="cust_name" id="cust_name"
+                        value="{{edit_cust.cust_name}}" required="" />
+                    <div class="invalid-feedback">
+                        Oh no! Customer good name is valid?
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Customer Phone</label>
+                <div class="col-sm-9">
+                    <input type="number" class="form-control" name="cust_phone" id="cust_phone"
+                        value="{{edit_cust.cust_phone}}" required="" />
+                    <div class="invalid-feedback">Oh no! phone no is invalid.</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Customer mobile</label>
+                <div class="col-sm-9">
+                    <input type="number" class="form-control" name="cust_mobile" id="cust_mobile"
+                        value="{{edit_cust.cust_mobile}}" />
+                    <div class="valid-feedback">Mobile no is invalid!</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Customer email</label>
+                <div class="col-sm-9">
+                    <input type="email" class="form-control" name="cust_email" id="cust_email"
+                        value="{{edit_cust.cust_email}}" />
+                    <div class="valid-feedback">Email no is invalid!</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Customer skype</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="cust_skype" id="cust_skype"
+                        value="{{edit_cust.cust_skype}}" />
+                    <div class="valid-feedback">Skype no is invalid!</div>
+                </div>
+            </div>
+            <div class="form-group mb-0 row">
+                <label class="col-sm-3 col-form-label">Customer address</label>
+                <div class="col-sm-9">
+                    <textarea class="form-control" required="" name="cust_addr"
+                        id="cust_addr">{{edit_cust.cust_addr}}</textarea>
+                    <div class="invalid-feedback">Address is invalid?</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-right">
+            <a href="/dashboard"> <button type="button" class="btn btn-success" >Back</button></a>
+            <button class="btn btn-primary" type="button" id="open-tab2">Next</button>
+        </div>
+    </div>
+</div>
+
+<!-- 2nd form  -->
+<div class="main-content" id="tab2">
+    <div class="card">
+        <div class="card-header">
+            <h4>Company details</h4>
+        </div>
+        <div class="card-body">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Company name</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="comp_name" id="comp_name"
+                        value="{{edit_cust.comp_name}}" required="" />
+                    <div class="invalid-feedback">Oh no! Company name is invalid?</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Company Phone</label>
+                <div class="col-sm-9">
+                    <input type="number" class="form-control" name="comp_no" id="comp_no" value="{{edit_cust.comp_no}}"
+                        required="" />
+                    <div class="invalid-feedback">Oh no! phone no. is invalid.</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">GST/Vat no.</label>
+                <div class="col-sm-9">
+                    <input type="number" class="form-control" name="gst_vat_no" id="gst_vat_no"
+                        value="{{edit_cust.gst_vat_no}}" />
+                    <div class="valid-feedback">GST/Vat no. is invalid!</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Company Type</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="comp_type" id="comp_type"
+                        value="{{edit_cust.comp_type}}" />
+                    <div class="valid-feedback">Type is invalid!</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Customer website</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="comp_web" id="comp_web"
+                        value="{{edit_cust.comp_web}}" />
+                    <div class="valid-feedback">Website name is invalid!</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Postal address</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="postal_addr" id="postal_addr"
+                        value="{{edit_cust.postal_addr}}" />
+                    <div class="valid-feedback">Postal address is invalid!</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Physical address</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="phy_addr" id="phy_addr"
+                        value="{{edit_cust.phy_addr}}" />
+                    <div class="valid-feedback">Physical address is invalid!</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-right">
+            <button class="btn btn-success" type="button"  id="close-tab2">Back</button>
+            <button class="btn btn-primary" type="button" id="open-tab3">Next</button>
+        </div>
+    </div>
+</div>
+
+<!-- 3rd form Account details -->
+<div class="main-content" id="tab3">
+    <div class="card">
+        <div class="card-header">
+            <h4>Account details</h4>
+        </div>
+        <div class="card-body">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Director name</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="dir_name" id="dir_name" required=""
+                        value="{{edit_cust.dir_name}}" />
+                    <div class="invalid-feedback">Oh no! Director name is valid?</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Director mobile</label>
+                <div class="col-sm-9">
+                    <input type="number" name="dir_mobile" id="dir_mobile" class="form-control" required=""
+                        value="{{edit_cust.dir_mobile}}" />
+                    <div class="invalid-feedback">
+                        Oh no! Director mobile is invalid.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Director phone</label>
+                <div class="col-sm-9">
+                    <input type="number" class="form-control" name="dir_phone" id="dir_phone"
+                        value="{{edit_cust.dir_phone}}" />
+                    <div class="valid-feedback">Director phone is invalid!</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Director address</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="dir_addr" id="dir_addr" required=""
+                        value="{{edit_cust.dir_addr}}" />
+                    <div class="invalid-feedback">
+                        Oh no! Director address is invalid.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Trade Refrence Type 1</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="trade_ref_1" id="trade_ref_1"
+                        value="{{edit_cust.trade_ref_1}}" />
+                    <div class="valid-feedback">Trade Refrence Type 1 is invalid!</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Trade Refrence Type 2</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="trade_ref_2" id="trade_ref_2" value="{{edit_cust.trade_ref_2}}" />
+                    <div class=" valid-feedback">Trade Refrence Type 2 is invalid!
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Trade Refrence Type 3</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" name="trade_ref_3" id="trade_ref_3" value="{{edit_cust.trade_ref_3}}" />
+                    <div class=" valid-feedback">Trade Refrence Type 3 is invalid!
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Status</label>
+        <div class="col-sm-9">
+            <select class="form-control selectric" name="status" id="status" value="{{edit_cust.status}}">
+                        <option value=" Active">Active</option>
+                <option value="not active">Not active</option>
+                <option value="None">None</option>
+            </select>
+            <div class="valid-feedback">Status is invalid!</div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Notes</label>
+        <div class="col-sm-9">
+            <textarea class="form-control" name="notes" id="notes">{{edit_cust.notes}}</textarea>
+            <div class="valid-feedback">Notes is invalid!</div>
+        </div>
+    </div>
+</div>
+<div class="card-footer text-right">
+    <button class="btn btn-success" type="button"  id="close-tab3">Back</button>
+    <button class="btn btn-primary" type="button" id="open-tab4">Next</button>
+</div>
+</div>
+</div>
+
+<!-- Financial details  -->
+
+<div class="main-content" id="tab4">
+    <div class="card">
+        <div class="card-header">
+            <h4>Financial details</h4>
+        </div>
+        <div class="card-body">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Notifications</label>
+                <div class="col-sm-9">
+                    <div class="form-group">
+                        <div class="selectgroup selectgroup-pills">
+                            <label class="selectgroup-item">
+                                <input type="checkbox" value="HTML" class="selectgroup-input" checked />
+                                <span class="selectgroup-button">SMS</span>
+                            </label>
+                            <label class="selectgroup-item">
+                                <input type="checkbox" value="CSS" class="selectgroup-input" />
+                                <span class="selectgroup-button">Email</span>
+                            </label>
+                            <label class="selectgroup-item">
+                                <input type="checkbox" value="PHP" class="selectgroup-input" />
+                                <span class="selectgroup-button">Post</span>
+                            </label>
+                            <label class="selectgroup-item">
+                                <input type="checkbox" value="JavaScript" class="selectgroup-input" />
+                                <span class="selectgroup-button">None</span>
+                            </label>
+                            <input type="hidden" id="notif" name="notif" value="{{edit_cust.notif}}" />
+                        </div>
+                    </div>
+                    <div class="invalid-feedback">Oh no! Notifications is invalid?</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Payment method</label>
+                <div class="col-sm-9">
+                    <div class="form-group">
+                        <div class="selectgroup w-100">
+                            <label class="selectgroup-item">
+                                <input type="radio" value="Cash" name="size" class="selectgroup-input-radio" />
+                                <span class="selectgroup-button selectgroup-button-icon"><i
+                                        class="fas fa-money-bill-alt"></i> Cash
+                                </span>
+                            </label>
+                            <label class="selectgroup-item">
+                                <input type="radio" value="Internet" name="size" class="selectgroup-input-radio"
+                                    checked />
+                                <span class="selectgroup-button selectgroup-button-icon"><i
+                                        class="fab fa-internet-explorer"></i> Internet</span>
+                            </label>
+                            <label class="selectgroup-item">
+                                <input type="radio" name="size" value="Credit" class="selectgroup-input-radio" />
+                                <span class="selectgroup-button selectgroup-button-icon"><i
+                                        class="fas fa-credit-card"></i> Credit</span>
+                            </label>
+                            <input type="hidden" name="pay_met" id="pay_met" value="{{edit_cust.pay_met}}" >
+                        </div>
+                    </div>
+                    <div class=" invalid-feedback">
+                            Oh no! Payment method is invalid.
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Payment Period</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="pay_period" name="pay_period" value="{{edit_cust.pay_period}}" />
+                    <div class=" valid-feedback">Payment Period is invalid!
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Company Sales Discount</label>
+                <div class="col-sm-9">
+                    <div class="form-group">
+                        <select class="form-control selectric" id="comp_sal_disc" name="comp_sal_disc" value="{{edit_cust.comp_sal_disc}}" >
+                            <option value=" no Discount">No Discount</option>
+                            <option value="10%">Discount 10%</option>
+                            <option value="15%">Discount 15%</option>
+                            <option value="25%">Discount 25%</option>
+                            <option value="35%">Discount 35%</option>
+                        </select>
+                    </div>
+                    <div class="valid-feedback">Company Sales Discount is invalid!</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-right">
+            <button class="btn btn-success" type="button"  id="close-tab4">Back</button>
+            <button class="btn btn-primary" type="button" id="open-tab5">Next</button>
+        </div>
+    </div>
+</div>
+
+<!-- Login details  -->
+
+<div class="main-content" id="tab5">
+    <div class="card">
+        <div class="card-header">
+            <h4>Login details</h4>
+        </div>
+        <div class="card-body">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">User name</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="user_name" name="user_name" required="" value="{{edit_cust.user_name}}" />
+                    <div class=" invalid-feedback">Oh no! User name is invalid?
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Password</label>
+            <div class="col-sm-9">
+                <input type="password" class="form-control" id="user_pass" name="user_pass" required="" value="{{edit_cust.user_pass}}" /><small
+                        id=" passwordHelpBlock" class="form-text text-muted">
+                Your password must be 8-20 characters long, contain letters and
+                numbers, and must not contain spaces, special characters, or
+                emoji.
+                </small>
+                <div class="invalid-feedback">Oh no! Password is invalid.</div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Role</label>
+            <div class="col-sm-9">
+                <select class="form-control selectric" id="role_name" name="role_name" value="{{edit_cust.role_name}}" >
+                        <option value=" Software Engineer">Software Engineer</option>
+                    <option value="Ui/Ux Designer">Ui/Ux Designer</option>
+                    <option value="Developer">Developer</option>
+                    <option value="Web Developer">Web Developer</option>
+                    <option value="Employee">Employee</option>
+                    <option value="Team leader">Team leader</option>
+                </select>
+                <div class="valid-feedback">Role is invalid!</div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-right">
+        <button class="btn btn-success" type="button"  id="close-tab5">Back</button>
+        <button class="btn btn-primary" type="submit" id="swal-2">Update</button>
+    </div>
+</div>
+</form>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+    $("#tab2").hide();
+    $("#tab3").hide();
+    $("#tab4").hide();
+    $("#tab5").hide();
+
+    $("#open-tab2").click(function () {
+        $("#tab1").hide();
+        $("#tab2").show();
+        $("#tab3").hide();
+        $("#tab4").hide();
+        $("#tab5").hide();
+    });
+
+    $("#open-tab3").click(function () {
+        $("#tab1").hide();
+        $("#tab2").hide();
+        $("#tab3").show();
+        $("#tab4").hide();
+        $("#tab5").hide();
+    });
+
+    $("#open-tab4").click(function () {
+        $("#tab1").hide();
+        $("#tab2").hide();
+        $("#tab3").hide();
+        $("#tab4").show();
+        $("#tab5").hide();
+    });
+
+    $("#open-tab5").click(function () {
+        $("#tab1").hide();
+        $("#tab2").hide();
+        $("#tab3").hide();
+        $("#tab4").hide();
+        $("#tab5").show();
+    });
+
+    // back button
+
+    $("#close-tab2").click(function () {
+        $("#tab1").show();
+        $("#tab2").hide();
+        $("#tab3").hide();
+        $("#tab4").hide();
+        $("#tab5").hide();
+    });
+    
+    $("#close-tab3").click(function () {
+        $("#tab1").hide();
+        $("#tab2").show();
+        $("#tab3").hide();
+        $("#tab4").hide();
+        $("#tab5").hide();
+    });
+
+    $("#close-tab4").click(function () {
+        $("#tab1").hide();
+        $("#tab2").hide();
+        $("#tab3").show();
+        $("#tab4").hide();
+        $("#tab5").hide();
+    });
+
+    $("#close-tab5").click(function () {
+        $("#tab1").hide();
+        $("#tab2").hide();
+        $("#tab3").hide();
+        $("#tab4").show();
+        $("#tab5").hide();
+    });
+
+
+
+    $(document).ready(function () {
+        $(".selectgroup-input").click(function () {
+            var txte = "";
+            $(".selectgroup-input:checked").each(function () {
+                txte += $(this).val() + ",  ";
+            });
+            txte = txte.substring(0, txte.length - 1);
+            $("#notif").val(txte);
+        });
+    });
+
+    const radio_btn = document.querySelector("#open-tab5");
+    const radio_button = document.querySelectorAll('input[name="size"]');
+    radio_btn.addEventListener("click", () => {
+        let selectMethod;
+        for (const radio_buttons of radio_button) {
+            if (radio_buttons.checked) {
+                selectMethod = radio_buttons.value;
+                break;
+            }
+        }
+        $("#pay_met").val(selectMethod);
+    });
+</script>
+
+{% include 'footer.html' %}

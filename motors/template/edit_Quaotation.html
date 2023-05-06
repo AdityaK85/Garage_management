@@ -1,0 +1,607 @@
+{% include 'header.html' %}
+<div class="main-content">
+  <section class="section">
+    <div class="section">
+      <div class="section-body">
+        <div class="card">
+          <div class="card-body">
+            <ul class="breadcrumb breadcrumb-style" style="background: #f3f3f3">
+              <li class="breadcrumb-item">
+                <h5 class="page-title m-b-0">Quotation Details</h5>
+              </li>
+              <li class="breadcrumb-item">
+                <a href="/dashboard/"> <i class="fas fa-home"></i></a>
+              </li>
+            </ul>
+            <form action="/update_quotation/{{obj.id}}">
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label>Customer name</label>
+                    <input
+                      type="text"
+                      id="cust_name"
+                      class="form-control"
+                      name="cust_name"
+                      tabindex="1"
+                      required
+                      autofocus
+                      value="{{obj.cust_name}}"
+                      placeholder=""
+                    />
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="veh_name">Quotation no.</label>
+                    <input
+                      type="number"
+                      id="quotation_no"
+                      class="form-control"
+                      name="quotation_no"
+                      tabindex="1"
+                      required
+                      autofocus
+                      value="{{obj.quotation_no}}"
+                      placeholder="Quotation number"
+                    />
+                    <div class="valid-feedback" id="quotation_number_error">
+                      Quotation number Invalid !
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-2">
+                  <div class="form-group">
+                    <label for="veh_reg_date">Quotation date</label>
+                    <input
+                      type="date"
+                      id="quot_date"
+                      class="form-control"
+                      name="quot_date"
+                      tabindex="1"
+                      required
+                      autofocus
+                      value="{{obj.quot_date|date:'Y-m-d'}}"
+                      placeholder="Registration date"
+                    />
+                    <div class="valid-feedback" id="quotation_date_error">
+                      Quotation date Invalid !
+                    </div>
+                  </div>
+                </div>
+                <!-- <br /> -->
+
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="veh_year">Address</label>
+                    <input
+                      type="text"
+                      id="cust_addr"
+                      class="form-control"
+                      name="cust_addr"
+                      tabindex="1"
+                      required
+                      autofocus
+                      value="{{obj.cust_addr}}"
+                      placeholder="Address"
+                    />
+                    <div class="valid-feedback" id="quotation_number_error">
+                      Customer address Invalid !
+                    </div>
+                  </div>
+                </div>
+                <br />
+
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="veh_year"> Phone</label>
+                    <input
+                      type="number"
+                      id="cust_phone"
+                      class="form-control"
+                      name="cust_phone"
+                      value="{{obj.cust_phone}}"
+                      tabindex="1"
+                      required
+                      autofocus
+                      placeholder="Phone number"
+                    />
+                    <div class="valid-feedback" id="cust_phone_error">
+                      Customer number Invalid !
+                    </div>
+                  </div>
+                </div>
+                <br />
+
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label>Registration number</label>
+                    <input
+                      type="number"
+                      id="veh_reg_no"
+                      class="form-control"
+                      name="veh_reg_no"
+                      tabindex="1"
+                      required
+                      autofocus
+                      value="{{obj.veh_reg_no}}"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label for="veh_year"> Details</label>
+                    <input
+                      type="text"
+                      id="notes"
+                      class="form-control"
+                      name="notes"
+                      tabindex="1"
+                      required
+                      autofocus
+                      value="{{obj.notes}}"
+                      placeholder="Details"
+                    />
+                    <div class="valid-feedback" id="notes_error">
+                      Notes Invalid !
+                    </div>
+                  </div>
+                </div>
+                <br />
+
+                <!-- Jobs  -->
+
+                <div class="card-body">
+                  <ul
+                    class="breadcrumb breadcrumb-style"
+                    style="background: #f3f3f3"
+                  >
+                    <li class="breadcrumb-item">
+                      <h5 class="page-title m-b-0">Jobs Cards</h5>
+                    </li>
+                  </ul>
+                  <div class="form-row">
+                    <div class="form-group col-6">
+                      <label for="inputEmail4">Jobs </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="job_name"
+                        name="job_name"
+                        value="{{obj.job_name}}"
+                        placeholder="jobs"
+                      />
+                      <div class="valid-feedback" id="job_name_error">
+                        Invalid Job !
+                      </div>
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="inputPassword4">Rates</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="rates"
+                        name="rates"
+                        value="{{obj.rates}}"
+                        placeholder="Rates"
+                      />
+                      <div class="valid-feedback" id="rates_error">
+                        Rates Invalid !
+                      </div>
+                    </div>
+                    <div class="form-group col-12">
+                      <label for="inputPassword4">Notes</label>
+                      <textarea
+                        name="note"
+                        id="note"
+                        class="form-control"
+                        ols="30"
+                        rows="10"
+                      >
+{{obj.note}}</textarea
+                      >
+                      <div class="valid-feedback" id="note_error">
+                        Notes Invalid !
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-body">
+                  <ul
+                    class="breadcrumb breadcrumb-style"
+                    style="background: #f3f3f3"
+                  >
+                    <li class="breadcrumb-item">
+                      <h5 class="page-title m-b-0">Parts details</h5>
+                    </li>
+                  </ul>
+                  <div class="form-row parts_data">
+                    <div class="form-group col-4">
+                      <label for="items">Items </label>
+                      <select
+                        class="form-control select2"
+                        id="items"
+                        name="items"
+                        onchange="show_part_det()"
+                      >
+                        <option>{{obj.items}}</option>
+
+                        {% for i in veh_part %}
+                        <option value="{{i.id}}, Name : {{i.items}}">
+                          {{i.items}}
+                        </option>
+                        {% endfor %}
+                      </select>
+                      <div class="valid-feedback" id="items_error">
+                        Items Invalid !
+                      </div>
+                    </div>
+                    <div class="form-group col-4">
+                      <label for="availale_qty">Available Quatity</label>
+                      <input
+                        type="text"
+                        class="form-control avai_qty"
+                        name="availale_qty"
+                        id="availale_qty"
+                        readonly
+                        value="{{obj.availale_qty}}"
+                        placeholder="Availale Quatity"
+                      />
+                    </div>
+                    <div class="form-group col-lg-4">
+                      <label for="inputPassword4">Quatity</label>
+                      <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="fas fa-store-alt"></i>
+                          </div>
+                        </div>
+                        <input
+                          type="text"
+                          class="form-control change_qty"
+                          id="qty"
+                          name="qty"
+                          placeholder="Quatity"
+                          value="{{obj.qty}}"
+                        />
+                        <div class="valid-feedback" id="qty_error">
+                          Qty Invalid !
+                        </div>
+                        <div class="valid-feedback" id="qty_limit_error">
+                          Enter Quatity is greater than Available Quatity !
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-4">
+                      <label for="price">Per item Price</label>
+                      <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="fas fa-rupee-sign"></i>
+                          </div>
+                        </div>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="price"
+                          name="price"
+                          value="{{obj.price}}"
+                          readonly
+                          placeholder="per Items rates"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-4">
+                      <label for="inputPassword4">Product Price</label>
+                      <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="fas fa-rupee-sign"></i>
+                          </div>
+                        </div>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="total_price"
+                          name="total_price"
+                          value="{{obj.total_price}}"
+                          readonly
+                          placeholder="Product Price"
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group col-lg-4">
+                      <label for="inputPassword4">Total</label>
+                      <div class="input-group mb-4">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <i class="fab fa-dropbox"></i>
+                          </div>
+                        </div>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="allTotal"
+                          value="{{obj.allTotal}}"
+                          readonly
+                          placeholder="Qty :  Price : "
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3">
+                      <button
+                        type="submit"
+                        class="form-control btn btn-success my-2"
+                        
+                      >
+                        <i class="fas fa-money-check-alt"></i> Click Here To Update
+                      </button>
+                    </div>
+                    <div class="col-lg-3">
+                      <button
+                        type="button"
+                        class="form-control btn btn-success my-2"
+                        onclick="send_to_customer()"
+                      >
+                        <i class="fas fa-money-check-alt"></i> Send to Customer
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  function select_customer() {
+    var cust_id = $("#cust_name").val();
+    console.log(cust_id);
+
+    $.ajax({
+      method: "POST",
+      url: "/show_details/",
+      data: {
+        cust_id,
+      },
+      success: function (response) {
+        if (response["msg"] == "success") {
+          console.log(response["address"]);
+          console.log(response["phone"]);
+          console.log(response["notes"]);
+
+          $("#cust_addr").val(response["address"]);
+          $("#cust_phone").val(response["phone"]);
+          $("#notes").val(response["notes"]);
+          var opt = [];
+          veh = JSON.parse(response["data"]);
+          for (key in veh) {
+            let data = veh[key];
+            console.log(veh[key]);
+            opt = `<option> ${data} </option>`;
+            $("#veh_reg_no").append(opt);
+          }
+        }
+        opt = [];
+      },
+    });
+  }
+
+  function submit_quotation() {
+    var cust_name = $("#cust_name").val();
+    var quotation_no = $("#quotation_no").val();
+    var cust_addr = $("#cust_addr").val();
+    var quot_date = $("#quot_date").val();
+    var cust_phone = $("#cust_phone").val();
+    var veh_reg_no = $("#veh_reg_no").val();
+    var notes = $("#notes").val();
+    let job_name = $("#job_name").val();
+    let rates = $("#rates").val();
+    let note = $("#note").val();
+    var items = $("#items").val();
+    var availale_qty = $("#availale_qty").val();
+    var qty = $("#qty").val();
+    var price = $("#price").val();
+    var total_price = $("#total_price").val();
+    var allTotal = $("#allTotal").val();
+
+    if (cust_name == "") {
+      $("#cust_name_error").show();
+      $("#cust_name").focus();
+    } else if (quotation_no == "") {
+      $("#quotation_number_error").show();
+      $("#quotation_no").focus();
+    } else if (cust_addr == "") {
+      $("#cust_addr_error").show();
+      $("#cust_addr").focus();
+    } else if (quot_date == "") {
+      $("#quotation_date_error").show();
+      $("#quot_date").focus();
+    } else if (cust_phone == "") {
+      $("#cust_phone_error").show();
+      $("#cust_phone").focus();
+    } else if (veh_reg_no == "") {
+      $("#veh_reg_no_error").show();
+      $("#veh_reg_no").focus();
+    } else if (notes == "") {
+      $("#notes_error").show();
+      $("#notes").focus();
+    } else if (job_name == "") {
+      $("#job_name_error").show();
+      $("#job_name").focus();
+    } else if (rates == "") {
+      $("#rates_error").show();
+      $("#rates").focus();
+    } else if (note == "") {
+      $("#note_error").show();
+      $("#note").focus();
+    } else if (items == "") {
+      $("#items_error").show();
+      $("#items").focus();
+    } else if (qty == "") {
+      $("#qty_error").show();
+      $("#qty").focus();
+    } else if (qty >= availale_qty) {
+      $("#qty_limit_error").show();
+      $("#qty").focus();
+    } else {
+      $.ajax({
+        method: "POST",
+        url: "/store_quotation/",
+        data: {
+          cust_name: cust_name,
+          quotation_no,
+          cust_addr,
+          quot_date,
+          cust_phone,
+          veh_reg_no,
+          notes,
+          job_name,
+          rates,
+          note,
+          items,
+          availale_qty,
+          qty,
+          price,
+          total_price,
+          allTotal,
+        },
+        success: function (response) {
+          if (response == "success") {
+            alert("success");
+          }
+        },
+      });
+    }
+  }
+
+  function show_part_det() {
+    var part_id = $("#items").val()[0];
+
+    $.ajax({
+      method: "POST",
+      url: "/veh_repair_part/",
+      data: {
+        part_id,
+      },
+      success: function (response) {
+        if (response["msg"] == "success") {
+          $("#availale_qty").val(response["qty"]);
+          $("#price").val(response["prod_price"]);
+          $("#qty").val("");
+          $("#total_price").val("");
+          $("#allTotal").val("");
+          $("#price ,#qty").keyup(function () {
+            let total = 0;
+            let prodPrice = $("#price").val();
+            let prodQty = Number($("#qty").val());
+
+            total = prodPrice * prodQty;
+            $("#total_price").val(total);
+            total_msg = `Qty : ${prodQty} Price : ${total}`;
+
+            $("#allTotal").val(total_msg);
+          });
+        }
+      },
+    });
+  }
+
+  function send_to_customer() {
+    var cust_name = $("#cust_name").val();
+    var quotation_no = $("#quotation_no").val();
+    var cust_addr = $("#cust_addr").val();
+    var quot_date = $("#quot_date").val();
+    var cust_phone = $("#cust_phone").val();
+    var veh_reg_no = $("#veh_reg_no").val();
+    var notes = $("#notes").val();
+    let job_name = $("#job_name").val();
+    let rates = $("#rates").val();
+    let note = $("#note").val();
+    var items = $("#items").val();
+    var availale_qty = $("#availale_qty").val();
+    var qty = $("#qty").val();
+    var price = $("#price").val();
+    var total_price = $("#total_price").val();
+    var allTotal = $("#allTotal").val();
+
+    $.ajax({
+      method: "POST",
+      url: "/send_mail/",
+      data: {
+        cust_name: cust_name,
+        quotation_no,
+        cust_addr,
+        quot_date,
+        cust_phone,
+        veh_reg_no,
+        notes,
+        job_name,
+        rates,
+        note,
+        items,
+        availale_qty,
+        qty,
+        price,
+        total_price,
+        allTotal,
+      },
+      success: function (response) {
+        if (response == "success") alert("send email");
+      },
+    });
+  }
+
+  $("#cust_name").keyup(function () {
+    $("#cust_name_error").hide();
+    $("#invalid_error").hide();
+    $("#error").hide();
+  });
+
+  $("#quotation_no").keyup(function () {
+    $("#quotation_number_error").hide();
+    $("#invalid_error").hide();
+    $("#error").hide();
+  });
+
+  $("#cust_addr").keyup(function () {
+    $("#cust_addr_error").hide();
+    $("#invalid_error").hide();
+    $("#error").hide();
+  });
+
+  $("#quot_date").keyup(function () {
+    $("#quotation_date_error").hide();
+    $("#invalid_error").hide();
+    $("#error").hide();
+  });
+
+  $("#cust_phone").keyup(function () {
+    $("#cust_phone_error").hide();
+    $("#invalid_error").hide();
+    $("#error").hide();
+  });
+
+  $("#veh_reg_no").keyup(function () {
+    $("#veh_reg_no_error").hide();
+    $("#invalid_error").hide();
+    $("#error").hide();
+  });
+
+  $("#notes").keyup(function () {
+    $("#notes_error").hide();
+    $("#invalid_error").hide();
+    $("#error").hide();
+  });
+</script>
+
+{% include 'footer.html' %}
